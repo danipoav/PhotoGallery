@@ -29,11 +29,11 @@
     height: 100%;
     z-index: 1;
     border-radius: 15px;
-    background: rgba(0, 0, 0, 0.2); /* Aquí le damos el fondo oscuro */
+    background: rgba(0, 0, 0, 0.2);
 
 }
 
-.card-data{
+.card-data {
     position: absolute;
     color: white;
     bottom: 10px;
@@ -41,7 +41,8 @@
     z-index: 2;
     font-size: 12px;
     font-family: "Cutive", serif;
-    p{
+
+    p {
         padding-top: 2px;
     }
 }
@@ -58,7 +59,7 @@
 .download,
 .heart,
 .delete,
-.description{
+.description {
     color: white;
     font-size: 25px;
     cursor: pointer;
@@ -85,10 +86,64 @@
 }
 
 .card-favourites {
+
     .title {
         font-family: "Cutive", serif;
         text-align: center;
         padding: 40px 50px;
         font-size: 1.5em;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+
+    .card-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+        padding: 0 20px;
+        grid-auto-rows: auto;
+        padding-bottom: 20px;
+    }
+
+    .card-image {
+        margin: 0;
+    }
+
+    .card-image.wide {
+        grid-column: span 2;
+    }
+
+    .card__select {
+        padding-left: 5%;
+
+        select {
+            font-size: 20px;
+        }
+    }
+
+    .card-buttons {
+        gap: 5px;
+    }
+    
+    .download,
+    .heart,
+    .delete,
+    .description {
+        font-size: 15px;
+    }
+
+    .card-data {
+        position: absolute;
+        color: white;
+        bottom: 10px;
+        left: 10px;
+        z-index: 2;
+        font-size: 8px;
+        font-family: "Cutive", serif;
+    
+        p {
+            padding-top: 2px;
+        }
     }
 }

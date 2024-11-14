@@ -10,15 +10,17 @@ function App() {
 
   return (
     <>
-      <LayoutHeader />
-      <CardImage />
-      <footer className="footer__container">
-        <h1 className="title">Pixani</h1>
-        <div className="link__container">
-          <FaLinkedin className="link" />
-          <FaGithub className="git" />
-        </div>
-      </footer>
+      <div className="app-container">
+        <LayoutHeader />
+        <CardImage />
+        <footer className="footer__container">
+          <h1 className="title">Pixani</h1>
+          <div className="link__container">
+            <FaLinkedin className="link" />
+            <FaGithub className="git" />
+          </div>
+        </footer>
+      </div>
     </>
   )
 }

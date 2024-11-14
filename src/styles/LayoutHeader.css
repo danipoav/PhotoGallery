@@ -25,6 +25,10 @@
     color: white;
     padding: 20px;
     z-index: 2;
+
+    p {
+        align-content: center;
+    }
 }
 
 .container__navbar__button {
@@ -33,6 +37,12 @@
     border: none;
     font-family: "Cutive", serif;
     font-size: 15px;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 5px 10px;
+    padding-top: 7px;
+    cursor: pointer;
+    outline: none;
 }
 
 .container__title {
@@ -44,11 +54,18 @@
 
     h1 {
         font-size: 1.5em;
-        font-weight: 10;
         line-height: 1.5em;
         padding: 10px 22px;
+        font-family: "Open Sans", serif;
+        font-weight: bold;
+    }
+
+    .title-favs {
+        padding-bottom: 3.4em;
     }
 }
+
+
 
 .container__input {
     display: flex;
@@ -81,6 +98,7 @@
 /*Footer*/
 
 .footer__container {
+    margin-top: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -93,6 +111,73 @@
     font-size: 30px;
 }
 
-.link{
+.link {
     margin-right: 0.2em;
+}
+
+@media only screen and (min-width: 500px) {
+    .container__navbar {
+        font-size: 10px;
+        margin-bottom: 0;
+    }
+
+    .container__navbar__button {
+        font-size: 10px;
+    }
+
+    .container__title {
+        padding-bottom: 1em;
+
+        h1 {
+            font-size: 1em;
+            line-height: 1.5em;
+            padding: 10px 22px;
+        }
+    }
+
+    .container__input {
+
+        padding: 0 20px;
+        justify-content: center;
+
+        input {
+            height: 1.5em;
+            width: 40%;
+            padding: 10px 0;
+            border-radius: 30px;
+            padding-left: 27px;
+            font-size: 8px;
+            outline: none;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 32%;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+        }
+    }
+
+    .footer__container {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 20px;
+        border-top: 2px solid black;
+    }
+
+    .link,
+    .git {
+        font-size: 20px;
+    }
+
+    .link {
+        margin-right: 0.2em;
+    }
+
+    .title {
+        font-size: 1em
+    }
 }

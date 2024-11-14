@@ -12,14 +12,14 @@ export default function LayoutHeader() {
     return (
         <header className='container'>
             <div className='container__navbar'>
-                <p>LOGO</p>
+                <p>Pixani</p>
                 <button onClick={() => dispatch(handleChangeFavourites())} className='container__navbar__button'>
                     {showFavourites ? 'All photos' : 'My photos'}
                 </button>
 
             </div>
             <div className='container__title'>
-                <h1>{showFavourites ? 'All my favourite images' : 'All type of images to download'}</h1>
+                {showFavourites ? <h1 className='title-favs'>My favourite images</h1> : <h1>All type of images to download</h1>}
             </div>
             {showFavourites ? false : (<div className='container__input'>
                 <FaSearch className='search-icon' />

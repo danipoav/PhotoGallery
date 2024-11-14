@@ -10,7 +10,7 @@ export const usePhotoApi = () => {
         const fetchApi = async () => {
             try {
                 const response = await fetch(searchInput === '' ?
-                    'https://api.unsplash.com/photos?page=5&per_page=10' :
+                    'https://api.unsplash.com/photos/random?count=15' :
                     `https://api.unsplash.com/search/photos?page=1&query=${searchInput}`, {
                     headers: {
                         Authorization: 'Client-ID blEtcMRJy0-RpgKUbivXjtGN-mRALcjsOqYP3J-dvbo'

@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import '../styles/ModalImage.css'
 import { SiTicktick } from "react-icons/si";
+import { RxCrossCircled } from "react-icons/rx";
 
 
 
@@ -11,8 +12,16 @@ export default function ModalImage({ photo, close }) {
     setDescription(e.target.value)
   }
   const handleSave = () => {
+    localStorage.setItem(`description-${photo.id}`, description)
     close();
   }
+
+  useEffect(() => {
+    const storage = localStorage.getItem(`description-${photo.id}`)
+    if (storage) {
+      setDescription(storage)
+    }
+  }, [photo.id])
 
 
   console.log(photo)
@@ -25,9 +34,10 @@ export default function ModalImage({ photo, close }) {
             value={description}
             onChange={handleChange}
           />
-        </div>
-        <div className="modal-buttons">
-        <SiTicktick className='cross' onClick={handleSave}/>
+          <div className="modal-buttons">
+            <RxCrossCircled className='cross' onClick={close} />
+            <SiTicktick className='done' onClick={handleSave} />
+          </div>
         </div>
       </div>
     </div>

@@ -61,16 +61,16 @@ export default function CardImage() {
 
     return (
         <>
+            <div className='card__select'>
+                <select name="order" id="order" onChange={handleChangeOrder}>
+                    <option value="">Order by</option>
+                    <option value="width">Width</option>
+                    <option value="height">Height</option>
+                    <option value="likes">Likes</option>
+                    <option value="date">Date</option>
+                </select>
+            </div>
             <div className="card-content">
-                <div className='card__select'>
-                    <select name="order" id="order" onChange={handleChangeOrder}>
-                        <option value="">Order by</option>
-                        <option value="width">Width</option>
-                        <option value="height">Height</option>
-                        <option value="likes">Likes</option>
-                        <option value="date">Date</option>
-                    </select>
-                </div>
                 {showFavourites ?
                     favourites.length === 0 ?
                         (<div className="card-favourites">
@@ -78,25 +78,26 @@ export default function CardImage() {
                             </h1>
                         </div>)
                         : (
-                            orderPhotos(favourites).map((photo) => (<div className="card-image" key={photo.id}>
-                                <div className="card-image-content" >
-                                    <img src={photo.urls.regular} alt={photo.alt_description} />
-                                    <div className="card-data">
-                                        <p>W {photo.width} </p>
-                                        <p>H {photo.height} </p>
-                                        <p><IoMdHeartEmpty/> {photo.likes} </p>
-                                        <p>{new Date(photo.created_at).toLocaleDateString('en-US')}</p>
+                            orderPhotos(favourites).map((photo) => (
+                                <div className={`card-image ${photo.width > photo.height ? 'wide' : ''}`} key={photo.id}>
+                                    <div className={`card-image-content`} >
+                                        <img src={photo.urls.regular} alt={photo.alt_description} />
+                                        <div className="card-data">
+                                            <p>W {photo.width} </p>
+                                            <p>H {photo.height} </p>
+                                            <p><IoMdHeartEmpty /> {photo.likes} </p>
+                                            <p>{new Date(photo.created_at).toLocaleDateString('en-US')}</p>
+                                        </div>
+                                        <div className="card-buttons">
+                                            <HiPencilAlt className="description" onClick={() => handleOpenModal(photo)} />
+                                            <FiDownload className="download" />
+                                            <MdDeleteOutline className="delete" onClick={() => removeFavouritesFunction(photo)} />
+                                        </div>
                                     </div>
-                                    <div className="card-buttons">
-                                        <HiPencilAlt className="description" onClick={() => handleOpenModal(photo)} />
-                                        <FiDownload className="download" />
-                                        <MdDeleteOutline className="delete" onClick={() => removeFavouritesFunction(photo)} />
-                                    </div>
-                                </div>
-                            </div>))
+                                </div>))
                         )
                     : orderPhotos(photos).map((photo) => (
-                        <div className="card-image" key={photo.id}>
+                        <div className={`card-image ${photo.width > photo.height ? 'wide' : ''}`} key={photo.id}>
                             <div className="card-image-content" >
                                 <img src={photo.urls.regular} alt={photo.alt_description} />
                                 <div className="card-buttons">
