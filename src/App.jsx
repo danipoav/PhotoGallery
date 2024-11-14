@@ -1,6 +1,6 @@
 import LayoutHeader from "./components/layoutHeader"
 import '../src/styles/global.css'
-import CardImage from "./components/Card-Image"
+import CardImage from "./components/CardImage"
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 

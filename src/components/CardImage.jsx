@@ -9,6 +9,9 @@ import { FaFaceGrinBeamSweat } from "react-icons/fa6";
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
+import { HiPencilAlt } from "react-icons/hi";
+import ModalImage from "./ModalImage";
+
 
 
 export default function CardImage() {
@@ -18,10 +21,10 @@ export default function CardImage() {
     const favourites = useSelector((state) => state.favourites.favourites)
     const showFavourites = useSelector((state) => state.favourites.showFavourites)
     const [order, setOrder] = useState('')
+    const [modal, setModal] = useState(false);
 
     const addFavouritesFunction = (photo) => {
         dispatch(addFavourites(photo))
-        toast.success("Photo added successfully", { autoClose: 1500, theme: "dark", position: "bottom-right", transition: Slide });
     }
 
     const removeFavouritesFunction = (photo) => {
@@ -31,6 +34,14 @@ export default function CardImage() {
 
     const handleChangeOrder = (e) => {
         setOrder(e.target.value)
+    }
+
+    const handleOpenModal = (photo) => {
+        setModal({ open: true, photo })
+    }
+
+    const handleCloseModal = () => {
+        setModal({ open: false, photos: null })
     }
 
     const orderPhotos = (photos) => {
@@ -43,10 +54,9 @@ export default function CardImage() {
         } else if (order === 'date') {
             return [...photos].sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
         }
-        console.log(photos)
-
         return [...photos]
     }
+
 
 
     return (
@@ -70,8 +80,15 @@ export default function CardImage() {
                         : (
                             orderPhotos(favourites).map((photo) => (<div className="card-image" key={photo.id}>
                                 <div className="card-image-content" >
-                                    <img src={photo.urls.small_s3} alt={photo.alt_description} />
+                                    <img src={photo.urls.regular} alt={photo.alt_description} />
+                                    <div className="card-data">
+                                        <p>W {photo.width} </p>
+                                        <p>H {photo.height} </p>
+                                        <p><IoMdHeartEmpty/> {photo.likes} </p>
+                                        <p>{new Date(photo.created_at).toLocaleDateString('en-US')}</p>
+                                    </div>
                                     <div className="card-buttons">
+                                        <HiPencilAlt className="description" onClick={() => handleOpenModal(photo)} />
                                         <FiDownload className="download" />
                                         <MdDeleteOutline className="delete" onClick={() => removeFavouritesFunction(photo)} />
                                     </div>
@@ -81,7 +98,7 @@ export default function CardImage() {
                     : orderPhotos(photos).map((photo) => (
                         <div className="card-image" key={photo.id}>
                             <div className="card-image-content" >
-                                <img src={photo.urls.small_s3} alt={photo.alt_description} />
+                                <img src={photo.urls.regular} alt={photo.alt_description} />
                                 <div className="card-buttons">
                                     <FiDownload className="download" />
                                     <IoMdHeartEmpty className="heart" onClick={() => addFavouritesFunction(photo)} />
@@ -89,6 +106,7 @@ export default function CardImage() {
                             </div>
                         </div>
                     ))}
+                {modal.open ? <ModalImage photo={modal.photo} close={handleCloseModal} /> : null}
                 <ToastContainer limit={2} />
             </div>
         </>

@@ -29,6 +29,21 @@
     height: 100%;
     z-index: 1;
     border-radius: 15px;
+    background: rgba(0, 0, 0, 0.2); /* Aquí le damos el fondo oscuro */
+
+}
+
+.card-data{
+    position: absolute;
+    color: white;
+    bottom: 10px;
+    left: 10px;
+    z-index: 2;
+    font-size: 12px;
+    font-family: "Cutive", serif;
+    p{
+        padding-top: 2px;
+    }
 }
 
 .card-buttons {
@@ -42,7 +57,8 @@
 
 .download,
 .heart,
-.delete {
+.delete,
+.description{
     color: white;
     font-size: 25px;
     cursor: pointer;
