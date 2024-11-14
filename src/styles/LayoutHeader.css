@@ -1,0 +1,98 @@
+.container {
+    position: relative;
+    width: 100%;
+    padding: 0px;
+    background-image: url('../img/sapaaa.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: "Cutive", serif;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.container__navbar {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    margin-bottom: 2em;
+    color: white;
+    padding: 20px;
+    z-index: 2;
+}
+
+.container__navbar__button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-family: "Cutive", serif;
+    font-size: 15px;
+}
+
+.container__title {
+    text-align: center;
+    padding-bottom: 2.5em;
+    color: white;
+    position: relative;
+    z-index: 2;
+
+    h1 {
+        font-size: 1.5em;
+        font-weight: 10;
+        line-height: 1.5em;
+        padding: 10px 22px;
+    }
+}
+
+.container__input {
+    display: flex;
+    position: relative;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+
+    input {
+        height: 3em;
+        width: 100%;
+        border-radius: 30px;
+        padding-left: 50px;
+        font-family: 'Electrolize', sans-serif;
+        border: none;
+        margin-bottom: 3em;
+        font-size: 15px;
+        outline: none;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 35px;
+        top: 12px;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/*Footer*/
+
+.footer__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+    border-top: 2px solid black;
+}
+
+.link,
+.git {
+    font-size: 30px;
+}
+
+.link{
+    margin-right: 0.2em;
+}
