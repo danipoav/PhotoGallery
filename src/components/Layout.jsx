@@ -7,7 +7,7 @@ import CardImage from './CardImage';
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
-export default function LayoutHeader() {
+export default function Layout() {
 
     const dispatch = useDispatch()
     const showFavourites = useSelector((state) => state.favourites.showFavourites)

@@ -1,5 +1,5 @@
 import '../src/styles/global.css'
-import LayoutHeader from './components/LayoutHeader';
+import Layout from './components/Layout';
 
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <div className="app-container">
-        <LayoutHeader />
+        <Layout />
       </div>
     </>
   )
