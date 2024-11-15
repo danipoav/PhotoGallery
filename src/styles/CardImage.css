@@ -11,6 +11,7 @@
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    height: fit-content;
 }
 
 .card-image-content {
@@ -88,12 +89,15 @@
 .card-favourites {
 
     .title {
-        font-family: "Cutive", serif;
+        font-family: "Open Sans", serif;
         text-align: center;
         padding: 40px 50px;
-        font-size: 1.5em;
+        font-size: 1.4em;
+        font-weight: 100;
     }
 }
+
+
 
 @media only screen and (min-width: 500px) {
 
@@ -115,8 +119,6 @@
     }
 
     .card__select {
-        padding-left: 5%;
-
         select {
             font-size: 20px;
         }
@@ -125,7 +127,7 @@
     .card-buttons {
         gap: 5px;
     }
-    
+
     .download,
     .heart,
     .delete,
@@ -141,9 +143,26 @@
         z-index: 2;
         font-size: 8px;
         font-family: "Cutive", serif;
-    
+
         p {
             padding-top: 2px;
         }
+    }
+
+    .card-favourites {
+
+        .title {
+            font-size: 1em;
+        }
+    }
+
+    .Toastify__toast {
+        padding: 5px;
+        font-size: 10px;
+        margin: 0;
+    }
+
+    .Toastify__toast-body {
+        margin: 0;
     }
 }

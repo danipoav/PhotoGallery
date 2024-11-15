@@ -1,7 +1,7 @@
 import '../styles/LayoutHeader.css';
 import { FaSearch } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
-import { handleChangeFavourites } from '../reducers/favouriteSlice';
+import { handleChangeFavourites, handleSearchDescription } from '../reducers/favouriteSlice';
 import { changeInput } from '../reducers/searchSlice';
 
 export default function LayoutHeader() {
@@ -13,7 +13,7 @@ export default function LayoutHeader() {
         <header className='container'>
             <div className='container__navbar'>
                 <p>Pixani</p>
-                <button onClick={() => dispatch(handleChangeFavourites())} className='container__navbar__button'>
+                <button onClick={() => dispatch(handleChangeFavourites())} className={`container__navbar__button ${showFavourites ? 'myphotos' : ''}`}>
                     {showFavourites ? 'All photos' : 'My photos'}
                 </button>
 
@@ -21,11 +21,13 @@ export default function LayoutHeader() {
             <div className='container__title'>
                 {showFavourites ? <h1 className='title-favs'>My favourite images</h1> : <h1>All type of images to download</h1>}
             </div>
-            {showFavourites ? false : (<div className='container__input'>
-                <FaSearch className='search-icon' />
-                <input onChange={(e) => dispatch(changeInput(e.target.value))} type="text" placeholder={showFavourites ? 'Search in my favourite images...' : 'Search images...'} />
-            </div>)}
+            {
+                <div className='container__input'>
+                    <FaSearch className='search-icon' />
+                    <input onChange={(e) => showFavourites ? dispatch(handleSearchDescription(e.target.value)) : dispatch(changeInput(e.target.value))} type="text" placeholder={showFavourites ? 'Search descriptions...' : 'Search images...'} />
+                </div>
+            }
 
-        </header>
+        </header >
     )
 }

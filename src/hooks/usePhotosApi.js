@@ -13,7 +13,7 @@ export const usePhotoApi = () => {
                     'https://api.unsplash.com/photos/random?count=15' :
                     `https://api.unsplash.com/search/photos?page=1&query=${searchInput}`, {
                     headers: {
-                        Authorization: 'Client-ID blEtcMRJy0-RpgKUbivXjtGN-mRALcjsOqYP3J-dvbo'
+                        Authorization: 'Client-ID yd80BJ5w-t543Nu074fb_Tr0jCEkd9uRfTaa1i9_pDA'
                     }
                 });
                 if (!response.ok) {

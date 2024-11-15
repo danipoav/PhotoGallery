@@ -31,11 +31,26 @@ export const favouriteSlice = createSlice({
         },
         removeFavourites: (state, action) => {
             const newArray = state.favourites.filter(photo => photo.id !== action.payload.id)
+            toast.error('Photo deleted successfully', { autoClose: 1500, theme: 'dark', position: "bottom-right", transition: Slide })
             state.favourites = newArray
             localStorage.setItem('favourites', JSON.stringify(state.favourites))
+        },
+        handleSearchDescription: (state, action) => {
+            const searchInput = action.payload.toLowerCase();
+
+            if (action.payload === '') {
+                state.favourites = getFavouritesLocalStorage()
+            } else {
+                state.favourites = state.favourites.filter(photo => {
+                    if (photo.description) {
+                        return photo.description.toLowerCase().includes(searchInput);
+                    }
+                    return;
+                });
+            }
         }
     }
 });
 
-export const { handleChangeFavourites, addFavourites, removeFavourites } = favouriteSlice.actions;
+export const { handleChangeFavourites, addFavourites, removeFavourites, handleSearchDescription } = favouriteSlice.actions;
 export default favouriteSlice.reducer;

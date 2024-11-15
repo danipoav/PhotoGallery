@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     padding: 0px;
-    background-image: url('../img/sapaaa.jpg');
+    background-image: url('../img/BackgroundHeader.jpg');
     background-size: cover;
     background-position: center;
     font-family: "Cutive", serif;
@@ -45,9 +45,14 @@
     outline: none;
 }
 
+.myphotos {
+    background-color: white;
+    color: black;
+}
+
 .container__title {
     text-align: center;
-    padding-bottom: 2.5em;
+    padding-bottom: 3em;
     color: white;
     position: relative;
     z-index: 2;
@@ -60,9 +65,6 @@
         font-weight: bold;
     }
 
-    .title-favs {
-        padding-bottom: 3.4em;
-    }
 }
 
 
@@ -116,9 +118,15 @@
 }
 
 @media only screen and (min-width: 500px) {
+
+    .container {
+        background-size: contain;
+    }
+
     .container__navbar {
         font-size: 10px;
         margin-bottom: 0;
+        padding-bottom: 0;
     }
 
     .container__navbar__button {
@@ -143,7 +151,7 @@
         input {
             height: 1.5em;
             width: 40%;
-            padding: 10px 0;
+            padding: 12px 0;
             border-radius: 30px;
             padding-left: 27px;
             font-size: 8px;
@@ -153,7 +161,7 @@
         .search-icon {
             position: absolute;
             left: 32%;
-            top: 5px;
+            top: 7px;
             width: 10px;
             height: 10px;
         }
