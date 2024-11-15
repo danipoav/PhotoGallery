@@ -49,6 +49,15 @@ export default function CardImage() {
         setModal({ open: false, photos: null })
     }
 
+    const handleChangeHeart = (photo) => {
+        const isFavourite = favourites.some(item => item.id === photo.id);
+        if (isFavourite) {
+            dispatch(removeFavourites(photo));
+        } else {
+            dispatch(addFavourites(photo));
+        }
+    };
+
     return (
         <>
             <div className='card__select'>
@@ -78,21 +87,25 @@ export default function CardImage() {
                                     <div className="card-buttons">
                                         <HiPencilAlt className="description" onClick={() => handleOpenModal(photo)} />
                                         <FiDownload className="download" onClick={() => downloadFile(photo.urls.regular, photo.slug)} />
-                                        <MdDeleteOutline className="delete" onClick={() => dispatch(removeFavourites(photo))} />
+                                        <MdDeleteOutline className="delete" onClick={() => handleChangeHeart(photo)} />
                                     </div>
                                 </ImageContent>
                             ))}
                         </div>
                     )
                 : (
-                    <div className="card-content">{orderPhotos(photos).map((photo) => (
-                        <ImageContent key={photo.id} photo={photo}>
-                            <div className="card-buttons">
-                                <FiDownload className="download" onClick={() => downloadFile(photo.links.download, photo.slug)} />
-                                <IoMdHeartEmpty className="heart" onClick={() => dispatch(addFavourites(photo))} />
-                            </div>
-                        </ImageContent>
-                    ))
+                    <div className="card-content">{orderPhotos(photos).map((photo) => {
+
+                        const isFavourite = favourites.some(item => item.id === photo.id);
+
+                        return (
+                            <ImageContent key={photo.id} photo={photo}>
+                                <div className="card-buttons">
+                                    <FiDownload className="download" onClick={() => downloadFile(photo.links.download, photo.slug)} />
+                                    <IoMdHeartEmpty className={`heart ${isFavourite ? 'true' : ''}`} onClick={() => handleChangeHeart(photo)} />
+                                </div>
+                            </ImageContent>)
+                    })
                     }
                     </div>
                 )

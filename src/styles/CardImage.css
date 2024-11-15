@@ -64,6 +64,14 @@
     color: white;
     font-size: 25px;
     cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.heart.true {
+    background-color: white;
+    color: black;
+    border-radius: 20%;
+    transform: scale(1.2);
 }
 
 .card__select {

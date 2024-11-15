@@ -3,13 +3,16 @@ import { FaSearch } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { handleChangeFavourites, handleSearchDescription } from '../reducers/favouriteSlice';
 import { changeInput } from '../reducers/searchSlice';
+import CardImage from './CardImage';
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 
 export default function LayoutHeader() {
 
     const dispatch = useDispatch()
     const showFavourites = useSelector((state) => state.favourites.showFavourites)
 
-    return (
+    return (<>
         <header className='container'>
             <div className='container__navbar'>
                 <p>Pixani</p>
@@ -29,5 +32,17 @@ export default function LayoutHeader() {
             }
 
         </header >
+
+        <CardImage />
+
+        <footer className="footer__container">
+            <h1 className="title">Pixani</h1>
+            <div className="link__container">
+                <a href="https://www.linkedin.com/in/danipoav/" target="_blank"><FaLinkedin className="link" /></a>
+                <a href="https://github.com/danipoav" target="_blank"><FaGithub className="git" /></a>
+
+            </div>
+        </footer>
+    </>
     )
 }
