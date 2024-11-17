@@ -6,17 +6,28 @@ import { changeInput } from '../reducers/searchSlice';
 import CardImage from './CardImage';
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 export default function Layout() {
 
     const dispatch = useDispatch()
     const showFavourites = useSelector((state) => state.favourites.showFavourites)
+    const navigate = useNavigate();
+
+    const handleChangePage = () => {
+        if (showFavourites) {
+            navigate('/')
+        } else {
+            navigate('/myPhotos')
+        }
+        dispatch(handleChangeFavourites())
+    }
 
     return (<>
         <header className='container'>
             <div className='container__navbar'>
                 <p>Pixani</p>
-                <button onClick={() => dispatch(handleChangeFavourites())} className={`container__navbar__button ${showFavourites ? 'myphotos' : ''}`}>
+                <button onClick={() => handleChangePage()} className={`container__navbar__button ${showFavourites ? 'myphotos' : ''}`}>
                     {showFavourites ? 'All photos' : 'My photos'}
                 </button>
 

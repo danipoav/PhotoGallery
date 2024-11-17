@@ -14,6 +14,10 @@
     height: fit-content;
 }
 
+.select{
+    color: black;
+}
+
 .card-image-content {
     img {
         display: flex;

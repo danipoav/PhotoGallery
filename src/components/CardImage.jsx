@@ -61,7 +61,7 @@ export default function CardImage() {
     return (
         <>
             <div className='card__select'>
-                <select name="order" id="order" onChange={handleChangeOrder}>
+                <select className="select" name="order" id="order" onChange={handleChangeOrder}>
                     <option value="">Order by</option>
                     <option value="width">Width</option>
                     <option value="height">Height</option>
