@@ -1,28 +1,19 @@
 import { usePhotoApi } from "../hooks/usePhotosApi"
-import { IoMdHeartEmpty } from "react-icons/io";
-import { FiDownload } from "react-icons/fi";
 import '../styles/CardImage.css'
-import { MdDeleteOutline } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import { addFavourites, removeFavourites } from "../reducers/favouriteSlice";
+import { useSelector } from "react-redux";
 import { ToastContainer, } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
-import { HiPencilAlt } from "react-icons/hi";
-import ModalImage from "./ModalImage";
-import ImageContent from "./ImageContent";
-import downloadFile from "../hooks/downloadFile";
+import { ImageContent, ImageContentFav } from "./ImageContent";
 
 
 
 export default function CardImage() {
 
-    const dispatch = useDispatch();
     const { photos } = usePhotoApi();
     const favourites = useSelector((state) => state.favourites.favourites)
     const showFavourites = useSelector((state) => state.favourites.showFavourites)
     const [order, setOrder] = useState('')
-    const [modal, setModal] = useState(false);
 
     const handleChangeOrder = (e) => {
         setOrder(e.target.value)
@@ -40,23 +31,6 @@ export default function CardImage() {
         }
         return [...photos]
     }
-
-    const handleOpenModal = (photo) => {
-        setModal({ open: true, photo })
-    }
-
-    const handleCloseModal = () => {
-        setModal({ open: false, photos: null })
-    }
-
-    const handleChangeHeart = (photo) => {
-        const isFavourite = favourites.some(item => item.id === photo.id);
-        if (isFavourite) {
-            dispatch(removeFavourites(photo));
-        } else {
-            dispatch(addFavourites(photo));
-        }
-    };
 
     return (
         <>
@@ -77,40 +51,20 @@ export default function CardImage() {
                     : (
                         <div className="card-content">
                             {orderPhotos(favourites).map((photo) => (
-                                <ImageContent key={photo.id} photo={photo}>
-                                    <div className="card-data">
-                                        <p>W {photo.width} </p>
-                                        <p>H {photo.height} </p>
-                                        <p><IoMdHeartEmpty /> {photo.likes} </p>
-                                        <p>{new Date(photo.created_at).toLocaleDateString('en-US')}</p>
-                                    </div>
-                                    <div className="card-buttons">
-                                        <HiPencilAlt className="description" onClick={() => handleOpenModal(photo)} />
-                                        <FiDownload className="download" onClick={() => downloadFile(photo.urls.regular, photo.slug)} />
-                                        <MdDeleteOutline className="delete" onClick={() => handleChangeHeart(photo)} />
-                                    </div>
-                                </ImageContent>
+                                <ImageContentFav key={photo.id} photo={photo} />
                             ))}
                         </div>
                     )
                 : (
                     <div className="card-content">{orderPhotos(photos).map((photo) => {
-
-                        const isFavourite = favourites.some(item => item.id === photo.id);
-
                         return (
-                            <ImageContent key={photo.id} photo={photo}>
-                                <div className="card-buttons">
-                                    <FiDownload className="download" onClick={() => downloadFile(photo.links.download, photo.slug)} />
-                                    <IoMdHeartEmpty className={`heart ${isFavourite ? 'true' : ''}`} onClick={() => handleChangeHeart(photo)} />
-                                </div>
-                            </ImageContent>)
+                            <ImageContent key={photo.id} photo={photo} />
+                        )
                     })
                     }
                     </div>
                 )
             }
-            {modal.open ? <ModalImage photo={modal.photo} close={handleCloseModal} /> : null}
             <ToastContainer limit={2} />
         </>
 
