@@ -14,7 +14,7 @@
     height: fit-content;
 }
 
-.select{
+.select {
     color: black;
 }
 
@@ -115,11 +115,11 @@
 
     .card-content {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 15px;
-        padding: 0 20px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 0 40px;
         grid-auto-rows: auto;
-        padding-bottom: 20px;
+        padding-bottom: 40px;
     }
 
     .card-image {
@@ -132,19 +132,20 @@
 
     .card__select {
         select {
-            font-size: 20px;
+            font-size: 40px;
+            margin-left: 1em;
         }
     }
 
     .card-buttons {
-        gap: 5px;
+        gap: 10px;
     }
 
     .download,
     .heart,
     .delete,
     .description {
-        font-size: 15px;
+        font-size: 30px;
     }
 
     .card-data {
@@ -153,28 +154,17 @@
         bottom: 10px;
         left: 10px;
         z-index: 2;
-        font-size: 8px;
+        font-size: 16px;
         font-family: "Cutive", serif;
 
         p {
-            padding-top: 2px;
+            padding-top: 4px;
         }
     }
 
     .card-favourites {
-
         .title {
-            font-size: 1em;
+            font-size: 2em;
         }
-    }
-
-    .Toastify__toast {
-        padding: 5px;
-        font-size: 10px;
-        margin: 0;
-    }
-
-    .Toastify__toast-body {
-        margin: 0;
     }
 }

@@ -91,23 +91,23 @@ textarea {
     }
 
     textarea {
-        font-size: 10px;
+        font-size: 15px;
     }
 
     .done {
         background-color: #2d2d2d;
-        height: 12px;
-        width: 12px;
-        margin-top: 2px;
+        height: 24px;
+        width: 24px;
+        margin-top: 4px;
     }
 
     .cross {
-        height: 15px;
-        width: 15px;
+        height: 30px;
+        width: 30px;
         text-align: left;
     }
 
     .modal-buttons {
-        margin-top: 0.5em;
+        margin-top: 1em;
     }
 }
